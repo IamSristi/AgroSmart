@@ -1,0 +1,499 @@
+{
+  "general": {
+    "temp": { "safe": [20, 30], "warn": [15, 35], "label": "20-30°C" },
+    "hum":  { "safe": [40, 60], "warn": [30, 80], "label": "40-60%" },
+    "soil": { "safe": [30, 70], "warn": [20, 80], "label": "30-70%" },
+    "ph":   { "safe": [6.0, 7.0], "warn": [5.5, 7.5], "label": "6.0-7.0" },
+    "water":{ "safe": [40, 95], "warn": [20, 98], "label": "40-95%" }
+  },
+  "aman_rice": {
+    "temp": { "safe": [20.0, 35.0], "warn": [15.0, 40.0], "label": "20.0-35.0°C" },
+    "hum": { "safe": [70, 95], "warn": [60, 100], "label": "70-95%" },
+    "soil": { "safe": [70, 100], "warn": [60, 100], "label": "70-100%" },
+    "ph": { "safe": [5.5, 7.0], "warn": [5.0, 7.5], "label": "5.5-7.0" },
+    "water": { "safe": [40, 95], "warn": [20, 98], "label": "40-95%" }
+  },
+  "boro_rice": {
+    "temp": { "safe": [25.0, 38.0], "warn": [20.0, 43.0], "label": "25.0-38.0°C" },
+    "hum": { "safe": [50, 80], "warn": [40, 90], "label": "50-80%" },
+    "soil": { "safe": [80, 100], "warn": [70, 100], "label": "80-100%" },
+    "ph": { "safe": [5.8, 7.2], "warn": [5.3, 7.7], "label": "5.8-7.2" },
+    "water": { "safe": [40, 95], "warn": [20, 98], "label": "40-95%" }
+  },
+  "aus_rice": {
+    "temp": { "safe": [22.0, 34.0], "warn": [17.0, 39.0], "label": "22.0-34.0°C" },
+    "hum": { "safe": [60, 85], "warn": [50, 95], "label": "60-85%" },
+    "soil": { "safe": [60, 90], "warn": [50, 100], "label": "60-90%" },
+    "ph": { "safe": [5.5, 6.8], "warn": [5.0, 7.3], "label": "5.5-6.8" },
+    "water": { "safe": [40, 95], "warn": [20, 98], "label": "40-95%" }
+  },
+  "jute": {
+    "temp": { "safe": [24.0, 37.0], "warn": [19.0, 42.0], "label": "24.0-37.0°C" },
+    "hum": { "safe": [65, 90], "warn": [55, 100], "label": "65-90%" },
+    "soil": { "safe": [60, 85], "warn": [50, 95], "label": "60-85%" },
+    "ph": { "safe": [5.0, 7.4], "warn": [4.5, 7.9], "label": "5.0-7.4" },
+    "water": { "safe": [40, 95], "warn": [20, 98], "label": "40-95%" }
+  },
+  "potato": {
+    "temp": { "safe": [15.0, 24.0], "warn": [10.0, 29.0], "label": "15.0-24.0°C" },
+    "hum": { "safe": [40, 65], "warn": [30, 75], "label": "40-65%" },
+    "soil": { "safe": [50, 75], "warn": [40, 85], "label": "50-75%" },
+    "ph": { "safe": [4.8, 5.4], "warn": [4.3, 5.9], "label": "4.8-5.4" },
+    "water": { "safe": [40, 95], "warn": [20, 98], "label": "40-95%" }
+  },
+  "wheat": {
+    "temp": { "safe": [10.0, 25.0], "warn": [5.0, 30.0], "label": "10.0-25.0°C" },
+    "hum": { "safe": [30, 55], "warn": [20, 65], "label": "30-55%" },
+    "soil": { "safe": [40, 60], "warn": [30, 70], "label": "40-60%" },
+    "ph": { "safe": [6.0, 7.5], "warn": [5.5, 8.0], "label": "6.0-7.5" },
+    "water": { "safe": [40, 95], "warn": [20, 98], "label": "40-95%" }
+  },
+  "mustard": {
+    "temp": { "safe": [10.0, 26.0], "warn": [5.0, 31.0], "label": "10.0-26.0°C" },
+    "hum": { "safe": [35, 55], "warn": [25, 65], "label": "35-55%" },
+    "soil": { "safe": [30, 50], "warn": [20, 60], "label": "30-50%" },
+    "ph": { "safe": [6.0, 7.5], "warn": [5.5, 8.0], "label": "6.0-7.5" },
+    "water": { "safe": [40, 95], "warn": [20, 98], "label": "40-95%" }
+  },
+  "tea": {
+    "temp": { "safe": [13.0, 30.0], "warn": [8.0, 35.0], "label": "13.0-30.0°C" },
+    "hum": { "safe": [70, 98], "warn": [60, 100], "label": "70-98%" },
+    "soil": { "safe": [70, 90], "warn": [60, 100], "label": "70-90%" },
+    "ph": { "safe": [4.5, 5.5], "warn": [4.0, 6.0], "label": "4.5-5.5" },
+    "water": { "safe": [40, 95], "warn": [20, 98], "label": "40-95%" }
+  },
+  "betel_vine": {
+    "temp": { "safe": [20.0, 32.0], "warn": [15.0, 37.0], "label": "20.0-32.0°C" },
+    "hum": { "safe": [75, 95], "warn": [65, 100], "label": "75-95%" },
+    "soil": { "safe": [60, 80], "warn": [50, 90], "label": "60-80%" },
+    "ph": { "safe": [6.0, 7.5], "warn": [5.5, 8.0], "label": "6.0-7.5" },
+    "water": { "safe": [40, 95], "warn": [20, 98], "label": "40-95%" }
+  },
+  "mango": {
+    "temp": { "safe": [24.0, 30.0], "warn": [19.0, 35.0], "label": "24.0-30.0°C" },
+    "hum": { "safe": [45, 70], "warn": [35, 80], "label": "45-70%" },
+    "soil": { "safe": [40, 65], "warn": [30, 75], "label": "40-65%" },
+    "ph": { "safe": [5.5, 7.5], "warn": [5.0, 8.0], "label": "5.5-7.5" },
+    "water": { "safe": [40, 95], "warn": [20, 98], "label": "40-95%" }
+  },
+  "litchi": {
+    "temp": { "safe": [20.0, 30.0], "warn": [15.0, 35.0], "label": "20.0-30.0°C" },
+    "hum": { "safe": [60, 80], "warn": [50, 90], "label": "60-80%" },
+    "soil": { "safe": [50, 75], "warn": [40, 85], "label": "50-75%" },
+    "ph": { "safe": [6.0, 7.0], "warn": [5.5, 7.5], "label": "6.0-7.0" },
+    "water": { "safe": [40, 95], "warn": [20, 98], "label": "40-95%" }
+  },
+  "guava": {
+    "temp": { "safe": [20.0, 32.0], "warn": [15.0, 37.0], "label": "20.0-32.0°C" },
+    "hum": { "safe": [50, 75], "warn": [40, 85], "label": "50-75%" },
+    "soil": { "safe": [40, 65], "warn": [30, 75], "label": "40-65%" },
+    "ph": { "safe": [5.0, 7.0], "warn": [4.5, 7.5], "label": "5.0-7.0" },
+    "water": { "safe": [40, 95], "warn": [20, 98], "label": "40-95%" }
+  },
+  "banana": {
+    "temp": { "safe": [25.0, 35.0], "warn": [20.0, 40.0], "label": "25.0-35.0°C" },
+    "hum": { "safe": [70, 85], "warn": [60, 95], "label": "70-85%" },
+    "soil": { "safe": [60, 90], "warn": [50, 100], "label": "60-90%" },
+    "ph": { "safe": [6.5, 7.5], "warn": [6.0, 8.0], "label": "6.5-7.5" },
+    "water": { "safe": [40, 95], "warn": [20, 98], "label": "40-95%" }
+  },
+  "pineapple": {
+    "temp": { "safe": [22.0, 32.0], "warn": [17.0, 37.0], "label": "22.0-32.0°C" },
+    "hum": { "safe": [70, 85], "warn": [60, 95], "label": "70-85%" },
+    "soil": { "safe": [55, 80], "warn": [45, 90], "label": "55-80%" },
+    "ph": { "safe": [4.5, 5.5], "warn": [4.0, 6.0], "label": "4.5-5.5" },
+    "water": { "safe": [40, 95], "warn": [20, 98], "label": "40-95%" }
+  },
+  "tomato": {
+    "temp": { "safe": [18.0, 28.0], "warn": [13.0, 33.0], "label": "18.0-28.0°C" },
+    "hum": { "safe": [50, 70], "warn": [40, 80], "label": "50-70%" },
+    "soil": { "safe": [55, 80], "warn": [45, 90], "label": "55-80%" },
+    "ph": { "safe": [6.0, 7.0], "warn": [5.5, 7.5], "label": "6.0-7.0" },
+    "water": { "safe": [40, 95], "warn": [20, 98], "label": "40-95%" }
+  },
+  "brinjal": {
+    "temp": { "safe": [22.0, 33.0], "warn": [17.0, 38.0], "label": "22.0-33.0°C" },
+    "hum": { "safe": [55, 75], "warn": [45, 85], "label": "55-75%" },
+    "soil": { "safe": [50, 75], "warn": [40, 85], "label": "50-75%" },
+    "ph": { "safe": [5.5, 6.8], "warn": [5.0, 7.3], "label": "5.5-6.8" },
+    "water": { "safe": [40, 95], "warn": [20, 98], "label": "40-95%" }
+  },
+  "chili": {
+    "temp": { "safe": [20.0, 35.0], "warn": [15.0, 40.0], "label": "20.0-35.0°C" },
+    "hum": { "safe": [45, 65], "warn": [35, 75], "label": "45-65%" },
+    "soil": { "safe": [45, 70], "warn": [35, 80], "label": "45-70%" },
+    "ph": { "safe": [6.0, 7.0], "warn": [5.5, 7.5], "label": "6.0-7.0" },
+    "water": { "safe": [40, 95], "warn": [20, 98], "label": "40-95%" }
+  },
+  "onion": {
+    "temp": { "safe": [15.0, 25.0], "warn": [10.0, 30.0], "label": "15.0-25.0°C" },
+    "hum": { "safe": [40, 60], "warn": [30, 70], "label": "40-60%" },
+    "soil": { "safe": [40, 60], "warn": [30, 70], "label": "40-60%" },
+    "ph": { "safe": [6.0, 7.5], "warn": [5.5, 8.0], "label": "6.0-7.5" },
+    "water": { "safe": [40, 95], "warn": [20, 98], "label": "40-95%" }
+  },
+  "cabbage": {
+    "temp": { "safe": [10.0, 22.0], "warn": [5.0, 27.0], "label": "10.0-22.0°C" },
+    "hum": { "safe": [60, 80], "warn": [50, 90], "label": "60-80%" },
+    "soil": { "safe": [60, 85], "warn": [50, 95], "label": "60-85%" },
+    "ph": { "safe": [5.5, 6.5], "warn": [5.0, 7.0], "label": "5.5-6.5" },
+    "water": { "safe": [40, 95], "warn": [20, 98], "label": "40-95%" }
+  },
+  "cauliflower": {
+    "temp": { "safe": [12.0, 25.0], "warn": [7.0, 30.0], "label": "12.0-25.0°C" },
+    "hum": { "safe": [60, 80], "warn": [50, 90], "label": "60-80%" },
+    "soil": { "safe": [60, 85], "warn": [50, 95], "label": "60-85%" },
+    "ph": { "safe": [5.5, 7.0], "warn": [5.0, 7.5], "label": "5.5-7.0" },
+    "water": { "safe": [40, 95], "warn": [20, 98], "label": "40-95%" }
+  },
+  "lentil": {
+    "temp": { "safe": [15.0, 28.0], "warn": [10.0, 33.0], "label": "15.0-28.0°C" },
+    "hum": { "safe": [35, 55], "warn": [25, 65], "label": "35-55%" },
+    "soil": { "safe": [30, 55], "warn": [20, 65], "label": "30-55%" },
+    "ph": { "safe": [6.0, 7.5], "warn": [5.5, 8.0], "label": "6.0-7.5" },
+    "water": { "safe": [40, 95], "warn": [20, 98], "label": "40-95%" }
+  },
+  "sugarcane": {
+    "temp": { "safe": [20.0, 35.0], "warn": [15.0, 40.0], "label": "20.0-35.0°C" },
+    "hum": { "safe": [60, 85], "warn": [50, 95], "label": "60-85%" },
+    "soil": { "safe": [65, 90], "warn": [55, 100], "label": "65-90%" },
+    "ph": { "safe": [6.0, 7.5], "warn": [5.5, 8.0], "label": "6.0-7.5" },
+    "water": { "safe": [40, 95], "warn": [20, 98], "label": "40-95%" }
+  },
+  "marigold": {
+    "temp": { "safe": [18.0, 28.0], "warn": [13.0, 33.0], "label": "18.0-28.0°C" },
+    "hum": { "safe": [50, 70], "warn": [40, 80], "label": "50-70%" },
+    "soil": { "safe": [50, 75], "warn": [40, 85], "label": "50-75%" },
+    "ph": { "safe": [6.5, 7.5], "warn": [6.0, 8.0], "label": "6.5-7.5" },
+    "water": { "safe": [40, 95], "warn": [20, 98], "label": "40-95%" }
+  },
+  "custom": {
+    "temp": { "safe": [20, 30], "warn": [15, 35], "label": "20-30°C" },
+    "hum":  { "safe": [40, 60], "warn": [30, 80], "label": "40-60%" },
+    "soil": { "safe": [30, 70], "warn": [20, 80], "label": "30-70%" },
+    "ph":   { "safe": [6.0, 7.0], "warn": [5.5, 7.5], "label": "6.0-7.0" },
+    "water":{ "safe": [40, 95], "warn": [20, 98], "label": "40-95%" }
+  },
+  "rice": {
+    "temp": { "safe": [20, 35], "warn": [15, 40], "label": "20-35°C" },
+    "hum": { "safe": [70, 90], "warn": [60, 100], "label": "70-90%" },
+    "soil": { "safe": [60, 90], "warn": [50, 100], "label": "High" },
+    "ph": { "safe": [5.0, 7.0], "warn": [4.5, 7.5], "label": "5.0-7.0" },
+    "water": { "safe": [60, 95], "warn": [40, 100], "label": "High" }
+  },
+  "maize": {
+    "temp": { "safe": [18, 27], "warn": [13, 32], "label": "18-27°C" },
+    "hum": { "safe": [50, 70], "warn": [40, 80], "label": "50-70%" },
+    "soil": { "safe": [40, 70], "warn": [30, 80], "label": "Medium" },
+    "ph": { "safe": [5.5, 7.5], "warn": [5.0, 8.0], "label": "5.5-7.5" },
+    "water": { "safe": [40, 70], "warn": [30, 80], "label": "Medium" }
+  },
+  "barley": {
+    "temp": { "safe": [12, 25], "warn": [7, 30], "label": "12-25°C" },
+    "hum": { "safe": [40, 60], "warn": [30, 70], "label": "40-60%" },
+    "soil": { "safe": [30, 60], "warn": [20, 70], "label": "Low-Med" },
+    "ph": { "safe": [6.0, 8.0], "warn": [5.5, 8.5], "label": "6.0-8.0" },
+    "water": { "safe": [30, 60], "warn": [20, 70], "label": "Low-Med" }
+  },
+  "oats": {
+    "temp": { "safe": [10, 25], "warn": [5, 30], "label": "10-25°C" },
+    "hum": { "safe": [50, 70], "warn": [40, 80], "label": "50-70%" },
+    "soil": { "safe": [40, 60], "warn": [30, 70], "label": "Medium" },
+    "ph": { "safe": [5.5, 7.0], "warn": [5.0, 7.5], "label": "5.5-7.0" },
+    "water": { "safe": [40, 70], "warn": [30, 80], "label": "Medium" }
+  },
+  "jowar": {
+    "temp": { "safe": [25, 35], "warn": [20, 40], "label": "25-35°C" },
+    "hum": { "safe": [30, 50], "warn": [20, 60], "label": "30-50%" },
+    "soil": { "safe": [20, 50], "warn": [10, 60], "label": "Low" },
+    "ph": { "safe": [5.5, 7.5], "warn": [5.0, 8.0], "label": "5.5-7.5" },
+    "water": { "safe": [20, 50], "warn": [10, 60], "label": "Low" }
+  },
+  "bajra": {
+    "temp": { "safe": [25, 35], "warn": [20, 40], "label": "25-35°C" },
+    "hum": { "safe": [30, 50], "warn": [20, 60], "label": "30-50%" },
+    "soil": { "safe": [20, 50], "warn": [10, 60], "label": "Low" },
+    "ph": { "safe": [5.5, 7.5], "warn": [5.0, 8.0], "label": "5.5-7.5" },
+    "water": { "safe": [20, 50], "warn": [10, 60], "label": "Low" }
+  },
+  "ragi": {
+    "temp": { "safe": [20, 30], "warn": [15, 35], "label": "20-30°C" },
+    "hum": { "safe": [40, 60], "warn": [30, 70], "label": "40-60%" },
+    "soil": { "safe": [30, 60], "warn": [20, 70], "label": "Low-Med" },
+    "ph": { "safe": [5.0, 7.0], "warn": [4.5, 7.5], "label": "5.0-7.0" },
+    "water": { "safe": [30, 60], "warn": [20, 70], "label": "Low-Med" }
+  },
+  "small_millets": {
+    "temp": { "safe": [20, 35], "warn": [15, 40], "label": "20-35°C" },
+    "hum": { "safe": [20, 40], "warn": [10, 50], "label": "Low" },
+    "soil": { "safe": [20, 50], "warn": [10, 60], "label": "Low" },
+    "ph": { "safe": [5.0, 7.5], "warn": [4.5, 8.0], "label": "5.0-7.5" },
+    "water": { "safe": [20, 50], "warn": [10, 60], "label": "Low" }
+  },
+  "chickpea": {
+    "temp": { "safe": [20, 25], "warn": [15, 30], "label": "20-25°C" },
+    "hum": { "safe": [20, 40], "warn": [10, 50], "label": "Low" },
+    "soil": { "safe": [20, 50], "warn": [10, 60], "label": "Low" },
+    "ph": { "safe": [6.0, 8.0], "warn": [5.5, 8.5], "label": "6.0-8.0" },
+    "water": { "safe": [20, 50], "warn": [10, 60], "label": "Low" }
+  },
+  "moong": {
+    "temp": { "safe": [25, 35], "warn": [20, 40], "label": "25-35°C" },
+    "hum": { "safe": [40, 60], "warn": [30, 70], "label": "Medium" },
+    "soil": { "safe": [35, 60], "warn": [25, 70], "label": "Low-Med" },
+    "ph": { "safe": [6.0, 7.5], "warn": [5.5, 8.0], "label": "6.0-7.5" },
+    "water": { "safe": [30, 60], "warn": [20, 70], "label": "Low-Med" }
+  },
+  "urad": {
+    "temp": { "safe": [25, 35], "warn": [20, 40], "label": "25-35°C" },
+    "hum": { "safe": [40, 60], "warn": [30, 70], "label": "Medium" },
+    "soil": { "safe": [35, 60], "warn": [25, 70], "label": "Low-Med" },
+    "ph": { "safe": [6.0, 7.5], "warn": [5.5, 8.0], "label": "6.0-7.5" },
+    "water": { "safe": [30, 60], "warn": [20, 70], "label": "Low-Med" }
+  },
+  "pigeon_pea": {
+    "temp": { "safe": [25, 35], "warn": [20, 40], "label": "25-35°C" },
+    "hum": { "safe": [40, 60], "warn": [30, 70], "label": "Medium" },
+    "soil": { "safe": [40, 65], "warn": [30, 75], "label": "Medium" },
+    "ph": { "safe": [6.0, 7.5], "warn": [5.5, 8.0], "label": "6.0-7.5" },
+    "water": { "safe": [40, 70], "warn": [30, 80], "label": "Medium" }
+  },
+  "pea": {
+    "temp": { "safe": [10, 25], "warn": [5, 30], "label": "10-25°C" },
+    "hum": { "safe": [40, 60], "warn": [30, 70], "label": "Medium" },
+    "soil": { "safe": [40, 65], "warn": [30, 75], "label": "Medium" },
+    "ph": { "safe": [6.0, 7.5], "warn": [5.5, 8.0], "label": "6.0-7.5" },
+    "water": { "safe": [40, 70], "warn": [30, 80], "label": "Medium" }
+  },
+  "rajma": {
+    "temp": { "safe": [15, 30], "warn": [10, 35], "label": "15-30°C" },
+    "hum": { "safe": [40, 60], "warn": [30, 70], "label": "Medium" },
+    "soil": { "safe": [40, 65], "warn": [30, 75], "label": "Medium" },
+    "ph": { "safe": [6.0, 7.5], "warn": [5.5, 8.0], "label": "6.0-7.5" },
+    "water": { "safe": [40, 70], "warn": [30, 80], "label": "Medium" }
+  },
+  "horse_gram": {
+    "temp": { "safe": [20, 30], "warn": [15, 35], "label": "20-30°C" },
+    "hum": { "safe": [20, 40], "warn": [10, 50], "label": "Low" },
+    "soil": { "safe": [20, 50], "warn": [10, 60], "label": "Low" },
+    "ph": { "safe": [5.5, 7.5], "warn": [5.0, 8.0], "label": "5.5-7.5" },
+    "water": { "safe": [20, 50], "warn": [10, 60], "label": "Low" }
+  },
+  "groundnut": {
+    "temp": { "safe": [25, 35], "warn": [20, 40], "label": "25-35°C" },
+    "hum": { "safe": [40, 60], "warn": [30, 70], "label": "Medium" },
+    "soil": { "safe": [40, 65], "warn": [30, 75], "label": "Medium" },
+    "ph": { "safe": [5.5, 7.0], "warn": [5.0, 7.5], "label": "5.5-7.0" },
+    "water": { "safe": [40, 70], "warn": [30, 80], "label": "Medium" }
+  },
+  "soybean": {
+    "temp": { "safe": [20, 30], "warn": [15, 35], "label": "20-30°C" },
+    "hum": { "safe": [40, 60], "warn": [30, 70], "label": "Medium" },
+    "soil": { "safe": [40, 65], "warn": [30, 75], "label": "Medium" },
+    "ph": { "safe": [6.0, 7.5], "warn": [5.5, 8.0], "label": "6.0-7.5" },
+    "water": { "safe": [40, 70], "warn": [30, 80], "label": "Medium" }
+  },
+  "sunflower": {
+    "temp": { "safe": [20, 30], "warn": [15, 35], "label": "20-30°C" },
+    "hum": { "safe": [30, 55], "warn": [20, 65], "label": "Low-Med" },
+    "soil": { "safe": [30, 60], "warn": [20, 70], "label": "Low-Med" },
+    "ph": { "safe": [6.0, 7.5], "warn": [5.5, 8.0], "label": "6.0-7.5" },
+    "water": { "safe": [30, 60], "warn": [20, 70], "label": "Low-Med" }
+  },
+  "sesame": {
+    "temp": { "safe": [25, 35], "warn": [20, 40], "label": "25-35°C" },
+    "hum": { "safe": [20, 40], "warn": [10, 50], "label": "Low" },
+    "soil": { "safe": [20, 50], "warn": [10, 60], "label": "Low" },
+    "ph": { "safe": [5.5, 8.0], "warn": [5.0, 8.5], "label": "5.5-8.0" },
+    "water": { "safe": [20, 50], "warn": [10, 60], "label": "Low" }
+  },
+  "linseed": {
+    "temp": { "safe": [10, 25], "warn": [5, 30], "label": "10-25°C" },
+    "hum": { "safe": [20, 40], "warn": [10, 50], "label": "Low" },
+    "soil": { "safe": [20, 50], "warn": [10, 60], "label": "Low" },
+    "ph": { "safe": [6.0, 7.5], "warn": [5.5, 8.0], "label": "6.0-7.5" },
+    "water": { "safe": [20, 50], "warn": [10, 60], "label": "Low" }
+  },
+  "castor": {
+    "temp": { "safe": [20, 35], "warn": [15, 40], "label": "20-35°C" },
+    "hum": { "safe": [20, 40], "warn": [10, 50], "label": "Low" },
+    "soil": { "safe": [20, 50], "warn": [10, 60], "label": "Low" },
+    "ph": { "safe": [5.0, 8.0], "warn": [4.5, 8.5], "label": "5.0-8.0" },
+    "water": { "safe": [20, 50], "warn": [10, 60], "label": "Low" }
+  },
+  "coconut": {
+    "temp": { "safe": [25, 35], "warn": [20, 40], "label": "25-35°C" },
+    "hum": { "safe": [70, 90], "warn": [60, 100], "label": "High" },
+    "soil": { "safe": [60, 90], "warn": [50, 100], "label": "High" },
+    "ph": { "safe": [5.0, 8.0], "warn": [4.5, 8.5], "label": "5.0-8.0" },
+    "water": { "safe": [60, 95], "warn": [40, 100], "label": "High" }
+  },
+  "cotton": {
+    "temp": { "safe": [20, 35], "warn": [15, 40], "label": "20-35°C" },
+    "hum": { "safe": [30, 55], "warn": [20, 65], "label": "Low-Med" },
+    "soil": { "safe": [40, 65], "warn": [30, 75], "label": "Medium" },
+    "ph": { "safe": [5.5, 8.0], "warn": [5.0, 8.5], "label": "5.5-8.0" },
+    "water": { "safe": [40, 70], "warn": [30, 80], "label": "Medium" }
+  },
+  "coffee": {
+    "temp": { "safe": [18, 28], "warn": [13, 33], "label": "18-28°C" },
+    "hum": { "safe": [70, 90], "warn": [60, 100], "label": "High" },
+    "soil": { "safe": [55, 80], "warn": [45, 90], "label": "Medium" },
+    "ph": { "safe": [5.0, 6.5], "warn": [4.5, 7.0], "label": "5.0-6.5" },
+    "water": { "safe": [40, 70], "warn": [30, 80], "label": "Medium" }
+  },
+  "tobacco": {
+    "temp": { "safe": [20, 30], "warn": [15, 35], "label": "20-30°C" },
+    "hum": { "safe": [40, 60], "warn": [30, 70], "label": "Medium" },
+    "soil": { "safe": [40, 65], "warn": [30, 75], "label": "Medium" },
+    "ph": { "safe": [5.5, 7.5], "warn": [5.0, 8.0], "label": "5.5-7.5" },
+    "water": { "safe": [40, 70], "warn": [30, 80], "label": "Medium" }
+  },
+  "rubber": {
+    "temp": { "safe": [25, 35], "warn": [20, 40], "label": "25-35°C" },
+    "hum": { "safe": [70, 90], "warn": [60, 100], "label": "High" },
+    "soil": { "safe": [60, 90], "warn": [50, 100], "label": "High" },
+    "ph": { "safe": [4.5, 6.0], "warn": [4.0, 6.5], "label": "4.5-6.0" },
+    "water": { "safe": [60, 95], "warn": [40, 100], "label": "High" }
+  },
+  "apple": {
+    "temp": { "safe": [0, 24], "warn": [-5, 29], "label": "0-24°C" },
+    "hum": { "safe": [40, 65], "warn": [30, 75], "label": "Medium" },
+    "soil": { "safe": [40, 65], "warn": [30, 75], "label": "Medium" },
+    "ph": { "safe": [5.5, 6.5], "warn": [5.0, 7.0], "label": "5.5-6.5" },
+    "water": { "safe": [40, 70], "warn": [30, 80], "label": "Medium" }
+  },
+  "citrus": {
+    "temp": { "safe": [20, 30], "warn": [15, 35], "label": "20-30°C" },
+    "hum": { "safe": [40, 65], "warn": [30, 75], "label": "Medium" },
+    "soil": { "safe": [40, 65], "warn": [30, 75], "label": "Medium" },
+    "ph": { "safe": [5.5, 7.5], "warn": [5.0, 8.0], "label": "5.5-7.5" },
+    "water": { "safe": [40, 70], "warn": [30, 80], "label": "Medium" }
+  },
+  "grapes": {
+    "temp": { "safe": [15, 35], "warn": [10, 40], "label": "15-35°C" },
+    "hum": { "safe": [30, 55], "warn": [20, 65], "label": "Low-Med" },
+    "soil": { "safe": [40, 65], "warn": [30, 75], "label": "Medium" },
+    "ph": { "safe": [6.0, 7.5], "warn": [5.5, 8.0], "label": "6.0-7.5" },
+    "water": { "safe": [40, 70], "warn": [30, 80], "label": "Medium" }
+  },
+  "pomegranate": {
+    "temp": { "safe": [25, 35], "warn": [20, 40], "label": "25-35°C" },
+    "hum": { "safe": [20, 40], "warn": [10, 50], "label": "Low" },
+    "soil": { "safe": [30, 60], "warn": [20, 70], "label": "Low" },
+    "ph": { "safe": [6.0, 7.5], "warn": [5.5, 8.0], "label": "6.0-7.5" },
+    "water": { "safe": [20, 50], "warn": [10, 60], "label": "Low" }
+  },
+  "papaya": {
+    "temp": { "safe": [25, 35], "warn": [20, 40], "label": "25-35°C" },
+    "hum": { "safe": [40, 65], "warn": [30, 75], "label": "Medium" },
+    "soil": { "safe": [40, 65], "warn": [30, 75], "label": "Medium" },
+    "ph": { "safe": [5.5, 7.0], "warn": [5.0, 7.5], "label": "5.5-7.0" },
+    "water": { "safe": [40, 70], "warn": [30, 80], "label": "Medium" }
+  },
+  "cashew": {
+    "temp": { "safe": [20, 35], "warn": [15, 40], "label": "20-35°C" },
+    "hum": { "safe": [30, 55], "warn": [20, 65], "label": "Medium" },
+    "soil": { "safe": [30, 60], "warn": [20, 70], "label": "Low-Med" },
+    "ph": { "safe": [5.0, 6.5], "warn": [4.5, 7.0], "label": "5.0-6.5" },
+    "water": { "safe": [30, 60], "warn": [20, 70], "label": "Low-Med" }
+  },
+  "almond": {
+    "temp": { "safe": [15, 30], "warn": [10, 35], "label": "15-30°C" },
+    "hum": { "safe": [20, 40], "warn": [10, 50], "label": "Low" },
+    "soil": { "safe": [20, 50], "warn": [10, 60], "label": "Low" },
+    "ph": { "safe": [6.0, 7.5], "warn": [5.5, 8.0], "label": "6.0-7.5" },
+    "water": { "safe": [20, 50], "warn": [10, 60], "label": "Low" }
+  },
+  "date": {
+    "temp": { "safe": [25, 40], "warn": [20, 45], "label": "25-40°C" },
+    "hum": { "safe": [10, 30], "warn": [5, 40], "label": "Low" },
+    "soil": { "safe": [10, 40], "warn": [5, 50], "label": "Low" },
+    "ph": { "safe": [7.0, 8.5], "warn": [6.5, 9.0], "label": "7.0-8.5" },
+    "water": { "safe": [10, 40], "warn": [5, 50], "label": "Low" }
+  },
+  "garlic": {
+    "temp": { "safe": [15, 25], "warn": [10, 30], "label": "15-25°C" },
+    "hum": { "safe": [30, 55], "warn": [20, 65], "label": "Low-Med" },
+    "soil": { "safe": [35, 60], "warn": [25, 70], "label": "Medium" },
+    "ph": { "safe": [6.0, 7.5], "warn": [5.5, 8.0], "label": "6.0-7.5" },
+    "water": { "safe": [40, 70], "warn": [30, 80], "label": "Medium" }
+  },
+  "carrot": {
+    "temp": { "safe": [10, 25], "warn": [5, 30], "label": "10-25°C" },
+    "hum": { "safe": [40, 65], "warn": [30, 75], "label": "Medium" },
+    "soil": { "safe": [40, 65], "warn": [30, 75], "label": "Medium" },
+    "ph": { "safe": [6.0, 7.0], "warn": [5.5, 7.5], "label": "6.0-7.0" },
+    "water": { "safe": [40, 70], "warn": [30, 80], "label": "Medium" }
+  },
+  "cucumber": {
+    "temp": { "safe": [20, 30], "warn": [15, 35], "label": "20-30°C" },
+    "hum": { "safe": [40, 65], "warn": [30, 75], "label": "Medium" },
+    "soil": { "safe": [50, 75], "warn": [40, 85], "label": "Medium" },
+    "ph": { "safe": [5.5, 7.5], "warn": [5.0, 8.0], "label": "5.5-7.5" },
+    "water": { "safe": [40, 70], "warn": [30, 80], "label": "Medium" }
+  },
+  "okra": {
+    "temp": { "safe": [25, 35], "warn": [20, 40], "label": "25-35°C" },
+    "hum": { "safe": [30, 55], "warn": [20, 65], "label": "Low-Med" },
+    "soil": { "safe": [40, 65], "warn": [30, 75], "label": "Medium" },
+    "ph": { "safe": [6.0, 7.5], "warn": [5.5, 8.0], "label": "6.0-7.5" },
+    "water": { "safe": [40, 70], "warn": [30, 80], "label": "Low-Med" }
+  },
+  "turmeric": {
+    "temp": { "safe": [20, 30], "warn": [15, 35], "label": "20-30°C" },
+    "hum": { "safe": [70, 90], "warn": [60, 100], "label": "High" },
+    "soil": { "safe": [65, 90], "warn": [55, 100], "label": "High" },
+    "ph": { "safe": [5.5, 7.5], "warn": [5.0, 8.0], "label": "5.5-7.5" },
+    "water": { "safe": [60, 95], "warn": [40, 100], "label": "High" }
+  },
+  "ginger": {
+    "temp": { "safe": [20, 30], "warn": [15, 35], "label": "20-30°C" },
+    "hum": { "safe": [70, 90], "warn": [60, 100], "label": "High" },
+    "soil": { "safe": [65, 90], "warn": [55, 100], "label": "High" },
+    "ph": { "safe": [5.5, 6.5], "warn": [5.0, 7.0], "label": "5.5-6.5" },
+    "water": { "safe": [60, 95], "warn": [40, 100], "label": "High" }
+  },
+  "black_pepper": {
+    "temp": { "safe": [20, 30], "warn": [15, 35], "label": "20-30°C" },
+    "hum": { "safe": [70, 90], "warn": [60, 100], "label": "High" },
+    "soil": { "safe": [65, 90], "warn": [55, 100], "label": "High" },
+    "ph": { "safe": [5.5, 6.5], "warn": [5.0, 7.0], "label": "5.5-6.5" },
+    "water": { "safe": [60, 95], "warn": [40, 100], "label": "High" }
+  },
+  "cardamom": {
+    "temp": { "safe": [15, 25], "warn": [10, 30], "label": "15-25°C" },
+    "hum": { "safe": [70, 90], "warn": [60, 100], "label": "High" },
+    "soil": { "safe": [65, 90], "warn": [55, 100], "label": "High" },
+    "ph": { "safe": [5.0, 6.5], "warn": [4.5, 7.0], "label": "5.0-6.5" },
+    "water": { "safe": [60, 95], "warn": [40, 100], "label": "High" }
+  },
+  "cumin": {
+    "temp": { "safe": [20, 30], "warn": [15, 35], "label": "20-30°C" },
+    "hum": { "safe": [20, 40], "warn": [10, 50], "label": "Low" },
+    "soil": { "safe": [20, 45], "warn": [10, 55], "label": "Low" },
+    "ph": { "safe": [6.5, 8.0], "warn": [6.0, 8.5], "label": "6.5-8.0" },
+    "water": { "safe": [20, 50], "warn": [10, 60], "label": "Low" }
+  },
+  "coriander": {
+    "temp": { "safe": [15, 25], "warn": [10, 30], "label": "15-25°C" },
+    "hum": { "safe": [40, 60], "warn": [30, 70], "label": "Medium" },
+    "soil": { "safe": [40, 65], "warn": [30, 75], "label": "Medium" },
+    "ph": { "safe": [6.0, 7.5], "warn": [5.5, 8.0], "label": "6.0-7.5" },
+    "water": { "safe": [40, 70], "warn": [30, 80], "label": "Medium" }
+  },
+  "tulsi": {
+    "temp": { "safe": [20, 30], "warn": [15, 35], "label": "20-30°C" },
+    "hum": { "safe": [40, 65], "warn": [30, 75], "label": "Medium" },
+    "soil": { "safe": [40, 65], "warn": [30, 75], "label": "Medium" },
+    "ph": { "safe": [6.0, 7.5], "warn": [5.5, 8.0], "label": "6.0-7.5" },
+    "water": { "safe": [40, 70], "warn": [30, 80], "label": "Medium" }
+  },
+  "aloe_vera": {
+    "temp": { "safe": [20, 35], "warn": [15, 40], "label": "20-35°C" },
+    "hum": { "safe": [20, 40], "warn": [10, 50], "label": "Low" },
+    "soil": { "safe": [20, 45], "warn": [10, 55], "label": "Low" },
+    "ph": { "safe": [6.0, 8.0], "warn": [5.5, 8.5], "label": "6.0-8.0" },
+    "water": { "safe": [20, 50], "warn": [10, 60], "label": "Low" }
+  }
+}

@@ -1,0 +1,11 @@
+flask>=3.0.0
+flask-cors>=4.0.0
+python-dotenv>=1.0.0
+requests>=2.31.0
+reportlab>=4.0.0
+pillow>=10.0.0
+ultralytics          # YOLOv8/v11 — optional, for Leaf Analyzer
+opencv-python-headless  # needed by ultralytics (headless = no GUI)
+numpy
+playwright
+playwright-stealth
