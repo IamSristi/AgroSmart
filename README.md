@@ -185,7 +185,7 @@ flowchart LR
 # 2. Install dependencies
 # 3. Note: Ollama model files not shared in this repo yet
 # 4. Configure environment variables
-# 5 Run the app
+# 5. Run the app
 ```
 
 <br/>
