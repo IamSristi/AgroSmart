@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgriNova — Weather</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='chat-widget.css') }}">
+  <style>
+    :root {
+      --bg: #080e1a;
+      --bg2: #0d1829;
+      --bg3: #111f35;
+      --glass: rgba(255, 255, 255, 0.04);
+      --glass-b: rgba(255, 255, 255, 0.09);
+      --accent: #00ffc3;
+      --accent2: #00c2ff;
+      --warn: #ff9f43;
+      --danger: #ff4757;
+      --text: #cfe3ff;
+      --muted: #5e7da0;
+      --font: 'Space Grotesk', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background-image: linear-gradient(rgba(0, 255, 195, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 195, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+    }
+
+    /* Floating droplets */
+    .drop {
+      position: fixed;
+      top: -5vh;
+      pointer-events: none;
+      z-index: 0;
+      font-size: var(--sz, 14px);
+      opacity: 0;
+      animation: dropFall var(--dur, 8s) linear var(--del, 0s) forwards;
+      color: var(--accent2);
+      filter: drop-shadow(0 0 6px currentColor);
+    }
+
+    @keyframes dropFall {
+      0% {
+        transform: translate3d(var(--x), 0, 0) scale(1);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 0.6;
+      }
+
+      100% {
+        transform: translate3d(var(--x), 115vh, 0) scale(0.5);
+        opacity: 0;
+      }
+    }
+
+    /* Nav */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 32px;
+      background: rgba(8, 14, 26, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-b);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.4rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-logo img {
+      height: 36px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color .2s;
+      position: relative;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--accent);
+    }
+
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -4px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 36px 24px 80px;
+    }
+
+    .hero-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #fff 0%, var(--accent2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+    }
+
+    .hero-sub {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-bottom: 32px;
+    }
+
+    /* Main weather card */
+    .weather-hero {
+      background: linear-gradient(135deg, rgba(0, 194, 255, 0.08), rgba(0, 255, 195, 0.05));
+      border: 1px solid rgba(0, 194, 255, 0.2);
+      border-radius: 24px;
+      padding: 32px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .weather-hero::before {
+      content: '';
+      position: absolute;
+      top: -80px;
+      right: -80px;
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 194, 255, 0.1), transparent 70%);
+    }
+
+    .w-icon {
+      font-size: 5rem;
+      line-height: 1;
+      filter: drop-shadow(0 0 20px rgba(0, 194, 255, 0.5));
+    }
+
+    .w-main {
+      flex: 1;
+      min-width: 180px;
+    }
+
+    .w-loc {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .w-temp {
+      font-size: 4rem;
+      font-weight: 700;
+      font-family: var(--mono);
+      color: #fff;
+      line-height: 1;
+    }
+
+    .w-temp span {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--muted);
+    }
+
+    .w-desc {
+      font-size: 1rem;
+      color: var(--text);
+      margin-top: 6px;
+    }
+
+    .w-feels {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .loading-spinner {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border: 2px solid rgba(0, 255, 195, 0.3);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin .8s linear infinite;
+      vertical-align: middle;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Highlights grid */
+    .section-title {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--glass-b), transparent);
+    }
+
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .h-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-b);
+      border-radius: 18px;
+      padding: 20px;
+      transition: transform .25s, border-color .25s, box-shadow .25s;
+    }
+
+    .h-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0, 255, 195, 0.2);
+      box-shadow: 0 8px 30px rgba(0, 255, 195, 0.07);
+    }
+
+    .h-icon {
+      font-size: 1.3rem;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .h-val {
+      font-size: 1.5rem;
+      font-weight: 700;
+      font-family: var(--mono);
+      color: #fff;
+    }
+
+    .h-label {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Agriculture advice panel */
+    .advice-panel {
+      background: var(--glass);
+      border: 1px solid var(--glass-b);
+      border-radius: 18px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .advice-row {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--glass-b);
+    }
+
+    .advice-row:last-child {
+      border-bottom: none;
+    }
+
+    .advice-icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      width: 32px;
+      text-align: center;
+    }
+
+    .advice-text {
+      font-size: 0.85rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .advice-text strong {
+      color: var(--accent);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      width: 22px;
+      height: 2px;
+      background: var(--muted);
+      border-radius: 2px;
+      transition: all .3s;
+    }
+
+    .mobile-menu {
+      position: fixed;
+      top: 62px;
+      right: -260px;
+      width: 220px;
+      background: var(--bg2);
+      border: 1px solid var(--glass-b);
+      border-radius: 16px 0 0 16px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      z-index: 200;
+      transition: right .35s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    .mobile-menu.open {
+      right: 0;
+    }
+
+    .mobile-menu a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .mobile-menu a:hover {
+      color: var(--accent);
+    }
+
+    @media(max-width:720px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    @media(max-width:560px) {
+      .weather-hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .w-icon {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="nav">
+    <div class="nav-logo">
+      <img src="{{ url_for('static', filename='logo.png') }}" alt="AgriNova" onerror="this.style.display='none'">
+    </div>
+    <div class="nav-links">
+      <a href="/">Dashboard</a>
+      <a href="/weather" class="active">Weather</a>
+      <a href="/leaf">Leaf Analyzer</a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu(this)">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/">Dashboard</a>
+    <a href="/weather">Weather</a>
+    <a href="/leaf">Leaf Analyzer</a>
+  </div>
+
+  <main>
+    <div class="hero-title">Weather Forecast</div>
+    <div class="hero-sub">Live conditions via open-meteo · no API key required · works with internet on WiFi</div>
+
+    <!-- Main weather card -->
+    <div class="weather-hero">
+      <div class="w-icon" id="wIcon">🌤</div>
+      <div class="w-main">
+        <div class="w-loc" id="wLoc">Detecting location…</div>
+        <div class="w-temp" id="wTemp"><span class="loading-spinner"></span></div>
+        <div class="w-desc" id="wDesc">Fetching weather…</div>
+        <div class="w-feels" id="wFeels"></div>
+      </div>
+    </div>
+
+    <!-- Highlights -->
+    <div class="section-title"><i class="fa-solid fa-chart-bar"></i> Today's Highlights</div>
+    <div class="highlights">
+      <div class="h-card">
+        <div class="h-icon"><i class="fa-solid fa-wind"></i></div>
+        <div class="h-val" id="hWind">--</div>
+        <div class="h-label">Wind km/h</div>
+      </div>
+      <div class="h-card">
+        <div class="h-icon"><i class="fa-solid fa-droplet"></i></div>
+        <div class="h-val" id="hHum">--</div>
+        <div class="h-label">Humidity %</div>
+      </div>
+      <div class="h-card">
+        <div class="h-icon"><i class="fa-solid fa-gauge-high"></i></div>
+        <div class="h-val" id="hPres">--</div>
+        <div class="h-label">Pressure hPa</div>
+      </div>
+      <div class="h-card">
+        <div class="h-icon"><i class="fa-solid fa-cloud-rain"></i></div>
+        <div class="h-val" id="hRain">--</div>
+        <div class="h-label">Rain Chance %</div>
+      </div>
+      <div class="h-card">
+        <div class="h-icon"><i class="fa-solid fa-sun"></i></div>
+        <div class="h-val" id="hUv">--</div>
+        <div class="h-label">UV Index</div>
+      </div>
+      <div class="h-card">
+        <div class="h-icon"><i class="fa-solid fa-eye"></i></div>
+        <div class="h-val" id="hVis">--</div>
+        <div class="h-label">Visibility km</div>
+      </div>
+    </div>
+
+    <!-- Agriculture advice -->
+    <div class="section-title"><i class="fa-solid fa-seedling"></i> Farming Advice</div>
+    <div class="advice-panel" id="advicePanel">
+      <div class="advice-row">
+        <div class="advice-icon">🌿</div>
+        <div class="advice-text"><strong>Loading…</strong>Fetching weather data for recommendations</div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function toggleMenu(btn) { btn.classList.toggle('active'); document.getElementById('mobileMenu').classList.toggle('open'); }
+
+    // Floating droplets
+    function spawnDrop() {
+      const el = document.createElement('i'); el.className = 'fa-solid fa-droplet drop';
+      el.style.cssText = `--x:${Math.random() * 100}vw;--sz:${8 + Math.random() * 10}px;--dur:${6 + Math.random() * 6}s;--del:${Math.random() * 2}s;left:0;`;
+      document.body.appendChild(el); el.addEventListener('animationend', () => el.remove());
+    }
+    setInterval(spawnDrop, 300);
+
+    const WEATHER_MAP = {
+      0: { desc: 'Clear Sky', icon: '☀️' }, 1: { desc: 'Mainly Clear', icon: '🌤' }, 2: { desc: 'Partly Cloudy', icon: '⛅' },
+      3: { desc: 'Overcast', icon: '☁️' }, 45: { desc: 'Fog', icon: '🌫' }, 48: { desc: 'Fog', icon: '🌫' },
+      51: { desc: 'Light Drizzle', icon: '🌦' }, 53: { desc: 'Drizzle', icon: '🌦' }, 55: { desc: 'Heavy Drizzle', icon: '🌧' },
+      61: { desc: 'Rain Showers', icon: '🌧' }, 63: { desc: 'Heavy Rain', icon: '🌧' }, 65: { desc: 'Very Heavy Rain', icon: '⛈' },
+      71: { desc: 'Snowfall', icon: '❄️' }, 80: { desc: 'Rain Showers', icon: '🌦' }, 81: { desc: 'Heavy Showers', icon: '⛈' },
+      95: { desc: 'Thunderstorm', icon: '⛈' }, 96: { desc: 'Thunderstorm', icon: '⛈' },
+    };
+
+    function getAdvice(temp, hum, rain, wind) {
+      const advice = [];
+      if (rain > 60)
+        advice.push({ icon: '🌧', title: 'High Rain Chance', body: 'Avoid irrigation today. Check drainage channels to prevent waterlogging.' });
+      else if (rain > 30)
+        advice.push({ icon: '🌦', title: 'Some Rain Expected', body: 'Reduce irrigation by 30-50%. Good day for fertiliser application if rain is light.' });
+      else
+        advice.push({ icon: '💧', title: 'Low Rain – Irrigate', body: 'Dry conditions expected. Schedule irrigation in the morning or evening to reduce evaporation.' });
+
+      if (temp > 38)
+        advice.push({ icon: '🥵', title: 'Heat Stress Alert', body: 'Shade sensitive crops. Irrigate in the early morning. Avoid spraying pesticides.' });
+      else if (temp > 32)
+        advice.push({ icon: '☀️', title: 'Hot & Sunny', body: 'Monitor soil moisture closely. Increase irrigation frequency for vegetables.' });
+      else if (temp < 10)
+        advice.push({ icon: '🥶', title: 'Cold Weather', body: 'Protect frost-sensitive crops with covers. Delay sowing warm-season crops.' });
+      else
+        advice.push({ icon: '🌡️', title: 'Good Temperature', body: 'Ideal conditions for most crops. Great day for field work and planting.' });
+
+      if (hum > 85)
+        advice.push({ icon: '🍄', title: 'High Humidity – Disease Risk', body: 'Watch for fungal diseases. Ensure good air circulation around crops. Consider fungicide if needed.' });
+      else if (hum < 30)
+        advice.push({ icon: '🏜️', title: 'Very Dry Air', body: 'Wind can cause rapid moisture loss from soil. Mulch to conserve moisture.' });
+      else
+        advice.push({ icon: '✅', title: 'Good Humidity', body: 'Comfortable humidity for most crops and farm operations.' });
+
+      if (wind > 40)
+        advice.push({ icon: '💨', title: 'Strong Winds', body: 'Postpone spraying operations. Stake or support tall crops. Check greenhouse covers.' });
+
+      return advice;
+    }
+
+    async function fetchWeather(lat, lon, locName) {
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,weathercode,wind_speed_10m,pressure_msl,uv_index,visibility&hourly=precipitation_probability&daily=uv_index_max&timezone=auto`;
+      try {
+        const res = await fetch(url);
+        const d = await res.json();
+        const c = d.current;
+        const wm = WEATHER_MAP[c.weathercode] || { desc: 'Weather', icon: '🌡️' };
+        const rain = d.hourly?.precipitation_probability?.[0] ?? 0;
+        const vis = c.visibility ? (c.visibility / 1000).toFixed(1) : '--';
+
+        document.getElementById('wLoc').textContent = locName;
+        document.getElementById('wTemp').textContent = c.temperature_2m + '°C';
+        document.getElementById('wDesc').textContent = wm.desc;
+        document.getElementById('wIcon').textContent = wm.icon;
+        document.getElementById('wFeels').textContent = `Feels like ${c.apparent_temperature}°C`;
+
+        document.getElementById('hWind').textContent = c.wind_speed_10m;
+        document.getElementById('hHum').textContent = c.relative_humidity_2m;
+        document.getElementById('hPres').textContent = c.pressure_msl;
+        document.getElementById('hRain').textContent = rain;
+        document.getElementById('hUv').textContent = c.uv_index ?? '--';
+        document.getElementById('hVis').textContent = vis;
+
+        // Advice
+        const advices = getAdvice(c.temperature_2m, c.relative_humidity_2m, rain, c.wind_speed_10m);
+        document.getElementById('advicePanel').innerHTML = advices.map(a => `
+      <div class="advice-row">
+        <div class="advice-icon">${a.icon}</div>
+        <div class="advice-text"><strong>${a.title}</strong>${a.body}</div>
+      </div>`).join('');
+
+      } catch (e) {
+        document.getElementById('wDesc').textContent = 'Weather fetch failed. Need internet access.';
+        document.getElementById('wTemp').textContent = '--';
+        document.getElementById('advicePanel').innerHTML = `
+      <div class="advice-row">
+        <div class="advice-icon">⚠️</div>
+        <div class="advice-text"><strong>No Internet</strong>Weather requires internet. Connect laptop to the internet (not possible in pure AP mode — hotspot from phone or use ESP STA+AP mode).</div>
+      </div>`;
+      }
+    }
+
+    // Geolocation → weather
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        pos => {
+          const { latitude: lat, longitude: lon } = pos.coords;
+          document.getElementById('wLoc').textContent = 'Your Location';
+          fetchWeather(lat, lon, 'Your Location');
+          setInterval(() => fetchWeather(lat, lon, 'Your Location'), 600000);
+        },
+        () => {
+          // Fallback: Kolkata
+          fetchWeather(22.5726, 88.3639, 'Kolkata (fallback)');
+        }
+      );
+    } else {
+      fetchWeather(22.5726, 88.3639, 'Kolkata (fallback)');
+    }
+  </script>
+  <script src="{{ url_for('static', filename='chat-widget.js') }}"></script>
+</body>
+
+</html>
