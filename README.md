@@ -37,9 +37,9 @@ built by Team Innovengers for our B.Tech Final Year Project
 
 ## 🌾 About the Project
 
-**AgroSmart (a.k.a. AgriNova)** is an end-to-end IoT-based smart agriculture system that fuses **embedded sensing**, **cloud connectivity**, and **artificial intelligence** into one integrated platform. Instead of forcing farmers to juggle separate tools for irrigation timers, soil sensors, and disease guides, AgriNova brings **live sensor monitoring, automated irrigation, AI-powered plant-disease diagnosis, and a conversational farming assistant** together in a single dashboard.
+**AgroSmart** is an end-to-end IoT-based smart agriculture system that fuses **embedded sensing**, **cloud connectivity**, and **artificial intelligence** into one integrated platform. Instead of forcing farmers to juggle separate tools for irrigation timers, soil sensors, and disease guides, AgriNova brings **live sensor monitoring, automated irrigation, AI-powered plant-disease diagnosis, and a conversational farming assistant** together in a single dashboard.
 
-> 💡 Most existing smart-farming tools solve *one* problem — a moisture sensor here, a timer there. AgriNova was designed to close that gap with a single, affordable, farmer-friendly system that also works when the internet doesn't.
+> 💡 Most existing smart-farming tools solve *one* problem — a moisture sensor here, a timer there. AgroSmart was designed to close that gap with a single, affordable, farmer-friendly system that also works when the internet doesn't.
 
 <br/>
 
