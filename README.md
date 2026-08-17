@@ -23,7 +23,6 @@ built by Team Innovengers for our B.Tech Final Year Project
 ![Firebase](https://img.shields.io/badge/Firebase-Realtime%20DB-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)
 ![Python](https://img.shields.io/badge/Python-Flask%20Backend-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![AI](https://img.shields.io/badge/AI-Leaf%20Analyzer-8A2BE2?style=for-the-badge&logo=tensorflow&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-lightgrey?style=for-the-badge)
 
 <br/>
 
