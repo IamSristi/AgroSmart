@@ -28,8 +28,6 @@ built by Team Innovengers for our B.Tech Final Year Project
 
 ![Stars](https://img.shields.io/github/stars/IamSristi/AgriNova?style=social)
 ![Forks](https://img.shields.io/github/forks/IamSristi/AgriNova?style=social)
-![Repo Size](https://img.shields.io/github/repo-size/IamSristi/AgriNova?color=2EE6A6)
-![Last Commit](https://img.shields.io/github/last-commit/IamSristi/AgriNova?color=2EE6A6)
 
 </div>
 
