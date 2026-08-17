@@ -15,7 +15,6 @@ built by Team Innovengers for our B.Tech Final Year Project
 </p>
 
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=14&duration=2500&pause=800&color=8B8B8B&center=true&vCenter=true&width=600&lines=Real-time+sensing+%7C+Automated+irrigation+%7C+AI+leaf+diagnosis;Firebase+cloud+sync+%7C+Solar-powered+%7C+Farmer-first+design" alt="Typing SVG" />
-
 <br/>
 
 ![IoT](https://img.shields.io/badge/IoT-Smart%20Agriculture-2EE6A6?style=for-the-badge&logo=internetarchive&logoColor=white)
