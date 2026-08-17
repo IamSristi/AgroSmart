@@ -4,7 +4,7 @@
 
 <!-- animated title -->
 <a href="https://github.com/IamSristi/AgriNova">
-  <img src="agrosmart-plant-animation-weather.svg" width="700" alt="AgroSmart animated banner"/>
+  <img src="assest/agrosmart-plant-animation-weather.svg" width="700" alt="AgroSmart animated banner"/>
 </a>
 
 <p>
@@ -91,13 +91,13 @@ built by Team Innovengers for our B.Tech Final Year Project
 
 **Farm Dashboard — live sensor telemetry, tank status & Kalpataru AI assistant**
 
-<img src="dashboard.png" width="850" alt="AgriNova Farm Dashboard"/>
+<img src="assest/dashboard.png" width="850" alt="AgriNova Farm Dashboard"/>
 
 <br/><br/>
 
 **Leaf Analyzer — AI-driven disease detection with treatment guidance**
 
-<img src="leaf-analyzer.png" width="850" alt="AgriNova Leaf Analyzer"/>
+<img src="assest/leaf-analyzer.png" width="850" alt="AgriNova Leaf Analyzer"/>
 
 </div>
 
